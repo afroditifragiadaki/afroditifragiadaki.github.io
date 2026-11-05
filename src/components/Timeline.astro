@@ -1,0 +1,51 @@
+---
+const { entries } = Astro.props;
+---
+<ol class="timeline">
+  {entries.map((e) => (
+    <li class="entry">
+      <div class="when">
+        <p class="dates">{e.dates}</p>
+        <p class="place">{e.place}</p>
+      </div>
+      <div>
+        <h3>{e.org}</h3>
+        <p class="role">{e.role}</p>
+        <p class="intro">{e.intro}</p>
+        <dl class="highlights">
+          {e.highlights.map((h) => (
+            <div>
+              <dt>{h.title}</dt>
+              <dd>{h.text}</dd>
+            </div>
+          ))}
+        </dl>
+        {e.stack && <ul class="stack">{e.stack.map((s) => <li>{s}</li>)}</ul>}
+      </div>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .timeline { margin: 0; padding: 0; list-style: none; }
+  .entry {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 40px;
+    padding-block: 40px;
+    border-top: 1px solid var(--line);
+  }
+  .entry:last-child { padding-bottom: 0; }
+  .dates { margin: 0; font-family: var(--mono); font-size: 0.8125rem; color: var(--green); }
+  .place { margin: 4px 0 0; font-size: 0.875rem; color: var(--muted); }
+  h3 { margin: 0; font-size: 1.375rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; }
+  .role { margin: 4px 0 0; font-weight: 500; color: var(--muted); }
+  .intro { max-width: 68ch; margin: 16px 0 0; }
+  .highlights { display: grid; gap: 16px; max-width: 68ch; margin: 24px 0; }
+  .highlights div { padding-left: 16px; border-left: 2px solid var(--line); }
+  dt { font-weight: 500; }
+  dd { margin: 2px 0 0; font-size: 0.9375rem; color: var(--muted); }
+  @media (max-width: 760px) {
+    .entry { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  }
+</style>

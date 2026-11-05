@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Timeline from '../components/Timeline.astro';
+import FeaturedProject from '../components/FeaturedProject.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { featured, more, publications, skillGroups, links } from '../data/projects.js';
+import { experience, education } from '../data/experience.js';
+---
+<Base>
+  <Nav />
+  <main id="main">
+    <Hero />
+
+    <section id="experience" class="section wrap">
+      <h2>Experience</h2>
+      <Timeline entries={experience} />
+    </section>
+
+    <section id="work" class="section wrap">
+      <h2>Projects</h2>
+      {featured.map((project) => <FeaturedProject project={project} />)}
+      <h3 class="subhead">More projects</h3>
+      <div class="cards">
+        {more.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </section>
+
+    <section id="education" class="section wrap">
+      <h2>Education</h2>
+      <Timeline entries={education} />
+    </section>
+
+    <section id="research" class="section wrap">
+      <h2>Research</h2>
+      <div class="papers">
+        {publications.map((p) => (
+          <article class="paper">
+            <h3>{p.href ? <a href={p.href}>{p.title}</a> : p.title}</h3>
+            <p>{p.authors}</p>
+            <p class="venue">{p.venue}</p>
+            <p class="abstract">{p.summary}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="skills" class="section wrap">
+      <h2>Skills</h2>
+      <div class="skills">
+        {skillGroups.map((g) => (
+          <div>
+            <h3>{g.name}</h3>
+            <ul class="stack">{g.items.map((s) => <li>{s}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>Afroditi Fragkiadaki</span>
+      <span class="footer-links">
+        <a href={links.linkedin}>LinkedIn</a>
+        <a href={links.github}>GitHub</a>
+      </span>
+    </div>
+  </footer>
+</Base>
