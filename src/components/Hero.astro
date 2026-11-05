@@ -5,7 +5,8 @@ import { readout, links, photo } from '../data/projects.js';
   <div class="wrap hero-grid">
     <div>
       <p class="eyebrow">Data science · Energy systems</p>
-      <h1>I turn messy energy data into <em>decisions.</em></h1>
+      <h1>Afroditi Fragkiadaki</h1>
+      <p class="tagline">I turn messy energy data into <em>decisions.</em></p>
       <p class="lede">
         Electrical engineer turned analyst. I build forecasting models, dispatch
         optimizers and anomaly detectors. I like the math, and I like shipping
@@ -58,10 +59,18 @@ import { readout, links, photo } from '../data/projects.js';
     letter-spacing: -0.035em;
     font-weight: 600;
   }
-  h1 em { font-style: normal; color: var(--green); }
+  .tagline {
+    margin: 16px 0 0;
+    font-size: clamp(1.375rem, 3vw, 2rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .tagline em { font-style: normal; color: var(--green); }
   .lede {
     max-width: 54ch;
-    margin: 24px 0 32px;
+    margin: 20px 0 32px;
     font-size: 1.125rem;
     color: var(--muted);
   }
