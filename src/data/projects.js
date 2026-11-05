@@ -122,7 +122,7 @@ export const skillGroups = [
 ];
 
 // To add your photo: save it as public/me.jpg, then change null to '/me.jpg'.
-export const photo = null;
+export const photo = '/me.jpg';
 
 export const links = {
   github: gh('').replace(/\/$/, ''),
